@@ -9,72 +9,59 @@ try:
 
     # create tables
     cur.execute("""CREATE TABLE IF NOT EXISTS user(
-        username NOT NULL,
-        password NOT NULL,
-        name,
-        email,
-        zip_code,
+        username TEXT NOT NULL,
+        password TEXT NOT NULL,
+        name TEXT,
+        email TEXT,
+        zip_code INTEGER,
         PRIMARY KEY(username)
         )""")
 
     cur.execute("""CREATE TABLE IF NOT EXISTS job(
-        id NOT NULL,
-        company_id,
-        title,
-        salary,
-        street,
-        city,
-        state,
-        zip_code,
-        deadline,
-        description,
-        qualifiactions,
-        PRIMARY KEY(id),
-        FOREIGN KEY(company_id) REFERENCES company(id)
-        )""")
-
-    cur.execute("""CREATE TABLE IF NOT EXISTS interested_in(
-        job_id NOT NULL,
-        username NOT NULL,
-        url,
-        date_applied,
-        status,
-        rating,
-        interview_time,
-        acceptance_deadline,
-        resume,
-        cover_letter,
-        PRIMARY KEY(job_id, username),
-        FOREIGN KEY(job_id) REFERENCES job(id),
-        FOREIGN KEY(username) REFERENCES user(username)
+        id INTEGER NOT NULL,
+        username TEXT NOT NULL,
+        company TEXT,
+        title TEXT,
+        salary INTEGER,
+        street TEXT,
+        city TEXT,
+        state TEXT,
+        zipcode INTEGER,
+        deadline NUMERIC,
+        description BLOB,
+        qualifiactions BLOB, 
+        url TEXT,
+        date_applied NUMERIC,
+        status INTEGER,
+        rating INTEGER,
+        interview_time NUMERIC,
+        acceptance_deadline NUMERIC,
+        resume BLOB,
+        cover_letter BLOB,
+        PRIMARY KEY(id, username),
+        FOREIGN KEY(username) REFERENCES user(username),
+        FOREIGN KEY(company) REFERENCES company(name)
         )""")
 
     cur.execute("""CREATE TABLE IF NOT EXISTS company(
-        id NOT NULL,
-        name NOT NULL,
-        description,
-        PRIMARY KEY(id)
-        )""")
-
-    cur.execute("""CREATE TABLE IF NOT EXISTS company_interest(
-        company_id NOT NULL,
-        user NOT NULL,
-        username,
-        password,
-        PRIMARY KEY(company_id, user),
-        FOREIGN KEY(company_id) REFERENCES company(id),
-        FOREIGN KEY(user) REFERENCES user(username)
+        name TEXT NOT NULL,
+        username TEXT NOT NULL,
+        user_login TEXT,
+        password TEXT,
+        notes BLOB,
+        PRIMARY KEY(name, username),
+        FOREIGN KEY(username) REFERENCES user(username)
         )""")
 
     cur.execute("""CREATE TABLE IF NOT EXISTS contacts(
-        company_id NOT NULL,
-        user NOT NULL,
-        name,
-        email,
-        phone,
-        PRIMARY KEY(company_id, user),
-        FOREIGN KEY(company_id) REFERENCES company(id),
-        FOREIGN KEY(user) REFERENCES user(username)
+        company_name TEXT NOT NULL,
+        username TEXT NOT NULL,
+        name TEXT NOT NULL,
+        email TEXT,
+        phone INTEGER,
+        PRIMARY KEY(company_name, username, name),
+        FOREIGN KEY(company_name) REFERENCES company(name),
+        FOREIGN KEY(username) REFERENCES user(username)
         )""")
 
     # commit the tables
