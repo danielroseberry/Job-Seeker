@@ -106,7 +106,7 @@ form .form-inner .form-group input:focus {
 }
 
 form .form-inner input[type="submit"],
-.welcome button {
+.UserPortal button {
   display: inline-block;
   padding: 10px 60px;
   border-radius: 8px;
@@ -120,25 +120,25 @@ form .form-inner input[type="submit"],
 }
 
 form .form-inner input[type="submit"]:hover, 
-.welcome button:hover{
+.UserPortal button:hover{
   background-position: 100%;
 }
 
-.welcome{
+.UserPortal{
   width: 100%;
   max-width: 480px;
   background-color: #FFF;
   padding: 15px 30px;
 }
 
-.welcome h2{
+.UserPortal h2{
   color: #888;
   font-size: 28px;
   font-weight: 500;
   margin-bottom: 30px;
 }
 
-.welcome h2 span{
+.UserPortal h2 span{
   color: #22dbec;
   font-weight: 700;
 }

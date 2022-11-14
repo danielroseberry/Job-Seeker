@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './index.css';
 import LoginForm from './components/LoginForm';
+import UserPortal from './components/UserPortal';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -40,10 +41,7 @@ function App() {
   return (
     <div className="App">
       {(user.email != "") ? (
-        <div className="welcome">
-        <h2>Welcome to Job Seeker, <span>{user.name}</span></h2>
-        <button onClick={Logout}>Logout</button>
-        </div>
+        <UserPortal User={user} Logout={Logout} />
       ) : (
         <LoginForm Login={Login} error={error} />
       )}
