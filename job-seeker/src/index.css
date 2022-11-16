@@ -154,13 +154,46 @@ form .form-inner input[type="submit"]:hover,
 .userPortal .header{
   background-color: rgb(43, 188, 133);
   color:#FFF;
+  margin: 0;
   padding: 20px;
   display: flex;
   vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+}
+
+.userPortal .header h2{
+  color: rgb(0, 0, 0);
+  text-align: center;
+  justify-content: center;
+  font-family: 'Billabong', 'Brush Script MT', cursive;
+  font-size: 48px;
+  font-weight: 500;
+}
+
+.userPortal h2 span{
+  color: #22dbec;
+  font-weight: 700;
+}
+
+.userPortal button {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  display: inline-block;
+  padding: 10px 60px;
+  border-radius: 8px;
+  background-image: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #22dbec);
+  background-size: 200%;
+  background-position: 0%;
+  transition: 0.4s;
+  color: #FFF;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .userPortal .logout{
-  justify-content: flex-end;
+  float: right;
 }
 
 .userPortal .content-container{
