@@ -1,4 +1,4 @@
-from msilib.schema import Error
+# from msilib.schema import Error
 import sqlite3
 
 try:
@@ -8,74 +8,74 @@ try:
     cur = conn.cursor()
 
     # create tables
-    cur.execute("""CREATE TABLE IF NOT EXISTS user(
-        username TEXT NOT NULL,
-        password TEXT NOT NULL,
-        name TEXT,
-        email TEXT,
-        zip_code INTEGER,
-        PRIMARY KEY(username)
-        )""")
+    # cur.execute("""CREATE TABLE IF NOT EXISTS user(
+    #     username TEXT NOT NULL,
+    #     password TEXT NOT NULL,
+    #     name TEXT,
+    #     email TEXT,
+    #     zip_code INTEGER,
+    #     PRIMARY KEY(username)
+    #     )""")
 
-    cur.execute("""CREATE TABLE IF NOT EXISTS job(
-        id INTEGER NOT NULL,
-        username TEXT NOT NULL,
-        company TEXT,
-        title TEXT,
-        salary INTEGER,
-        street TEXT,
-        city TEXT,
-        state TEXT,
-        zipcode INTEGER,
-        deadline NUMERIC,
-        description BLOB,
-        qualifiactions BLOB, 
-        url TEXT,
-        date_applied NUMERIC,
-        status INTEGER,
-        rating INTEGER,
-        interview_time NUMERIC,
-        acceptance_deadline NUMERIC,
-        resume BLOB,
-        cover_letter BLOB,
-        PRIMARY KEY(id, username),
-        FOREIGN KEY(username) REFERENCES user(username),
-        FOREIGN KEY(company) REFERENCES company(name)
-        )""")
+    # cur.execute("""CREATE TABLE IF NOT EXISTS job(
+    #     id INTEGER NOT NULL,
+    #     username TEXT NOT NULL,
+    #     company TEXT,
+    #     title TEXT,
+    #     salary INTEGER,
+    #     street TEXT,
+    #     city TEXT,
+    #     state TEXT,
+    #     zipcode INTEGER,
+    #     deadline NUMERIC,
+    #     description BLOB,
+    #     qualifiactions BLOB, 
+    #     url TEXT,
+    #     date_applied NUMERIC,
+    #     status INTEGER,
+    #     rating INTEGER,
+    #     interview_time NUMERIC,
+    #     acceptance_deadline NUMERIC,
+    #     resume BLOB,
+    #     cover_letter BLOB,
+    #     PRIMARY KEY(id, username),
+    #     FOREIGN KEY(username) REFERENCES user(username),
+    #     FOREIGN KEY(company) REFERENCES company(name)
+    #     )""")
 
-    cur.execute("""CREATE TABLE IF NOT EXISTS company(
-        name TEXT NOT NULL,
-        username TEXT NOT NULL,
-        user_login TEXT,
-        password TEXT,
-        notes BLOB,
-        PRIMARY KEY(name, username),
-        FOREIGN KEY(username) REFERENCES user(username)
-        )""")
+    # cur.execute("""CREATE TABLE IF NOT EXISTS company(
+    #     name TEXT NOT NULL,
+    #     username TEXT NOT NULL,
+    #     user_login TEXT,
+    #     password TEXT,
+    #     notes BLOB,
+    #     PRIMARY KEY(name, username),
+    #     FOREIGN KEY(username) REFERENCES user(username)
+    #     )""")
 
-    cur.execute("""CREATE TABLE IF NOT EXISTS contacts(
-        company_name TEXT NOT NULL,
-        username TEXT NOT NULL,
-        name TEXT NOT NULL,
-        email TEXT,
-        phone INTEGER,
-        PRIMARY KEY(company_name, username, name),
-        FOREIGN KEY(company_name) REFERENCES company(name),
-        FOREIGN KEY(username) REFERENCES user(username)
-        )""")
+    # cur.execute("""CREATE TABLE IF NOT EXISTS contacts(
+    #     company_name TEXT NOT NULL,
+    #     username TEXT NOT NULL,
+    #     name TEXT NOT NULL,
+    #     email TEXT,
+    #     phone INTEGER,
+    #     PRIMARY KEY(company_name, username, name),
+    #     FOREIGN KEY(company_name) REFERENCES company(name),
+    #     FOREIGN KEY(username) REFERENCES user(username)
+    #     )""")
 
-    cur.execute("""INSERT INTO user VALUES ('admin', 'password', 'Admin', 'admin@jobseeker.com', 21045)""")
+    # cur.execute("""INSERT INTO user VALUES ('admin', 'password', 'Admin', 'admin@jobseeker.com', 21045)""")
 
-    # commit the tables
-    conn.commit()
+    # # commit the tables
+    # conn.commit()
 
-    '''cursor = conn.execute("SELECT * FROM user")
+    cursor = conn.execute("SELECT * FROM user")
     for row in cursor:
         print("Username: ", row[0])
         print("Password: ", row[1])
         print("Name: ", row[2])
         print("Email: ", row[3])
-        print("Zip: ", row[4])'''
+        print("Zip: ", row[4])
 
 except sqlite3.Error as err:
     print("There was a problem connecting to the database:", err)

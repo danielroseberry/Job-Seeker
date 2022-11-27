@@ -1,10 +1,10 @@
 import sqlite3
 from flask import Flask, g, request
 import json
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-cors = CORS(app)
+CORS(app)
 app.config['CORS_HEADERS'] = "Content-Type"
 DATABASE = "../database/job-seeker.db"
 
@@ -27,6 +27,7 @@ def query_db(query, args=(), one=False):
     return (rv[0] if rv else None) if one else rv
 
 @app.route("/login", methods = ["POST"])
+@cross_origin()
 def login():
     '''username = "admin"
     password = "password"'''
