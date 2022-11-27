@@ -4,6 +4,7 @@ import './index.css';
 import LoginForm from './components/LoginForm';
 import UserPortal from './components/UserPortal'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { getUser } from './Requests'
 
 function App() {
   const adminUser = {
@@ -15,10 +16,23 @@ function App() {
   const [error, setError] = useState("");
   const [login, setLogin] = useState(false);
 
+  const getLogin = async details => {
+    const res = await getUser(details);
+    return res;
+  };
+
   const Login = details => {
     console.log(details);
+    const tempUser = getLogin(details)
+    if (tempUser){
+      setUser({
+        name: tempUser.name,
+        email: tempUser.email
+      });
+      setLogin(true);
+    }
 
-    if (details.email === adminUser.email && details.password === adminUser.password){
+    /*if (details.email === adminUser.email && details.password === adminUser.password){
       console.log("Logged In");
       setUser({
         name: details.name,
@@ -28,7 +42,7 @@ function App() {
     } else {
       console.log("Details do not match")
       setError("Details do not match!")
-    }
+    }*/
 
   }
 

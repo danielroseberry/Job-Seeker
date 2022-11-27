@@ -64,8 +64,18 @@ try:
         FOREIGN KEY(username) REFERENCES user(username)
         )""")
 
+    cur.execute("""INSERT INTO user VALUES ('admin', 'password', 'Admin', 'admin@jobseeker.com', 21045)""")
+
     # commit the tables
     conn.commit()
+
+    '''cursor = conn.execute("SELECT * FROM user")
+    for row in cursor:
+        print("Username: ", row[0])
+        print("Password: ", row[1])
+        print("Name: ", row[2])
+        print("Email: ", row[3])
+        print("Zip: ", row[4])'''
 
 except sqlite3.Error as err:
     print("There was a problem connecting to the database:", err)
