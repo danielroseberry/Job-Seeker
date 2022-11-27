@@ -1,9 +1,11 @@
 import sqlite3
-from flask import Flask, g
+from flask import Flask, g, request
 import json
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+cors = CORS(app)
+app.config['CORS_HEADERS'] = "Content-Type"
 DATABASE = "../database/job-seeker.db"
 
 def get_db():
@@ -24,11 +26,14 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
-@app.route("/get-user")
-def get_user():
-    username = "admin"
-    password = "password"
-    cursor = query_db("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], one=True)
+@app.route("/login", methods = ["POST"])
+def login():
+    '''username = "admin"
+    password = "password"'''
+    user = request.get_json()
+    print(user)
+    cursor = query_db("SELECT * FROM user WHERE username = ? AND password = ?", 
+        [user["username"], user["password"]], one=True)
     if cursor:
         cursorDict = {
             "username": cursor[0],
@@ -38,11 +43,6 @@ def get_user():
             "zipcode": cursor[4]
         }
         jcur = json.dumps(cursorDict)
-        '''print("Username: ", cursor[0])
-        print("Password: ", cursor[1])
-        print("Name: ", cursor[2])
-        print("Email: ", cursor[3])
-        print("Zip: ", cursor[4])'''
         return jcur
     else:
-        return 404
+        return {}

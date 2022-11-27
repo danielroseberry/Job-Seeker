@@ -7,43 +7,20 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { getUser } from './Requests'
 
 function App() {
-  const adminUser = {
-    email: "admin@jobseeker.com",
-    password: "password"
-  }
 
   const [user, setUser] = useState({name: "", email: ""});
   const [error, setError] = useState("");
   const [login, setLogin] = useState(false);
 
-  const getLogin = async details => {
+  const Login = async details => {
     const res = await getUser(details);
-    return res;
-  };
-
-  const Login = details => {
-    console.log(details);
-    const tempUser = getLogin(details)
-    if (tempUser){
-      setUser({
-        name: tempUser.name,
-        email: tempUser.email
-      });
+    if (res.username) {
+      setUser(res);
       setLogin(true);
+      setError("");
+    }else{
+      setError("Username or Password incorrect.  Try again.");
     }
-
-    /*if (details.email === adminUser.email && details.password === adminUser.password){
-      console.log("Logged In");
-      setUser({
-        name: details.name,
-        email: details.email
-      })
-      setLogin(true);
-    } else {
-      console.log("Details do not match")
-      setError("Details do not match!")
-    }*/
-
   }
 
   const Logout = () => {
