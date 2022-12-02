@@ -12,3 +12,16 @@ export const getUser = async user => {
     });
     return res.json();
 };
+
+export const createUser = async user => {
+    const res = await fetch(`${APIURL}/register`, {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+    });
+    return res.json();
+};

@@ -12,7 +12,7 @@ function UserPortal({Logout, name}) {
                 <button onClick={Logout} className='logout'>Logout</button>
             </div>
             <div className='content-container'>
-                <h1>Welcome, {name}</h1>
+                <h2>Welcome, <span>{name}</span></h2>
                 <div className='flex-container'>
                     <TaskList />
                     <ActiveJobs />

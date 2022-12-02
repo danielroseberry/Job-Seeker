@@ -4,22 +4,35 @@ import './index.css';
 import LoginForm from './components/LoginForm';
 import UserPortal from './components/UserPortal'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { getUser } from './Requests'
+import { createUser, getUser } from './Requests'
 
 function App() {
 
   const [user, setUser] = useState({name: "", email: ""});
-  const [error, setError] = useState("");
   const [login, setLogin] = useState(false);
 
-  const Login = async details => {
-    const res = await getUser(details);
-    if (res.username) {
-      setUser(res);
+  const Login = (details) => {
+
+    if (details.username) {
+      setUser(details);
       setLogin(true);
-      setError("");
-    }else{
-      setError("Username or Password incorrect.  Try again.");
+    }
+    // const res = await getUser(details);
+    // if (res.username) {
+    //   setUser(res);
+    //   setLogin(true);
+    //   setError("");
+    // }else{
+    //   setError("Username or Password incorrect.  Try again.");
+    // }
+
+  }
+
+  const Register = (details) => {
+    // setError("Registration Failed.  Try again.");
+    if (details.username) {
+      setUser(details);
+      setLogin(true);
     }
   }
 
@@ -49,7 +62,7 @@ function App() {
     <div>
       {!login ? 
       (<div className='login'>
-      <LoginForm Login={Login} error={error} />
+      <LoginForm Login={Login} Register={Register} />
       </div>) : 
       <UserPortal Logout={Logout} name={user.name}/>
       }

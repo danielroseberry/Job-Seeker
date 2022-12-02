@@ -42,12 +42,12 @@ input, button {
   background-color: #f3f3f3;
 }
 
-form{
-  display: block;
-  position: relative;
+.log-reg-box{
+  /* display: block; */
+  overflow: hidden;
 }
 
-form:after{
+.log-reg-box:after{
   content: '';
   display: block;
   position: absolute;
@@ -59,11 +59,93 @@ form:after{
   background-image: linear-gradient(to bottom right, #FFCE00, #22dbec);
 }
 
+.form-box{
+  position: relative;
+  width: 380px;
+  height: 550px;
+  background-color: #FFF;
+  padding: 30px;
+  margin: 6% auto;
+  z-index: 2;
+}
+
+.form-box h2{
+  color: rgb(0, 0, 0);
+  text-align: center;
+  justify-content: center;
+  font-family: 'Billabong', 'Brush Script MT', cursive;
+  font-size: 48px;
+  font-weight: 500;
+  padding: 10px;
+  z-index: 2;
+}
+
+.button-box{
+  width: 220px;
+  margin: 20px auto;
+  position: relative;
+  box-shadow: 0 0 20px 9px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+}
+
+.button-box button{
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+}
+
+#btn{
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 110px;
+  height: 100%;
+  background: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #22dbec);
+  border-radius: 30px;
+  transition: .5s;
+}
+
+.input-group{
+  top: 180px;
+  position: absolute;
+  width: 280px;
+  transition: 0.5s;
+}
+
+#login{
+  left: 50px;
+  top: 250px;
+}
+
+#register{
+  left: 450px;
+}
+
+/* form{
+  display: block;
+  position: relative;
+} */
+
+/* form:after{
+  content: '';
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: 1;
+  background-image: linear-gradient(to bottom right, #FFCE00, #22dbec);
+} */
+
 form .form-inner {
   position: relative;
   display: block;
-  background-color: #FFF;
-  padding: 30px;
+  background-color: transparent;
+  padding: 10px;
   z-index: 2;
 }
 
@@ -102,7 +184,7 @@ form .form-inner .login-button-container {
 .form-inner .form-group:focus-within input {
   display: block;
   justify-content: center;
-  width: 100%;
+  width: 75%;
   padding: 10px 60px;
   background-color: #F8F8F8;
   border-radius: 8px;
@@ -152,7 +234,7 @@ form .form-inner input[type="submit"]:hover,
 }
 
 .userPortal .header{
-  background-color: rgb(43, 188, 133);
+  background-color: #f3f3f3;
   color:#FFF;
   margin: 0;
   padding: 20px;
@@ -190,6 +272,10 @@ form .form-inner input[type="submit"]:hover,
   color: #FFF;
   font-weight: 700;
   cursor: pointer;
+}
+
+.userPortal button:hover{
+  background-position: 100%;
 }
 
 .userPortal .logout{
