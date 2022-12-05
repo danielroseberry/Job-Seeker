@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {jobList} from './dummy-data'
 import {getJobs} from './../Requests'
 
-function ActiveJobs({username}) {
+function ActiveJobs({username, rerender}) {
     const [jobs, setJobs] = useState([]);
 
     const getData = async () => {
@@ -12,7 +12,7 @@ function ActiveJobs({username}) {
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [rerender]);
 
     return(
         <div className='taskList'>

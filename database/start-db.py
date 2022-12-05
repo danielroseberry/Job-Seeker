@@ -66,7 +66,8 @@ try:
     #     )""")
 
     # cur.execute("""INSERT INTO user VALUES ('admin', 'password', 'Admin', 'admin@jobseeker.com', 21045)""")
-    cur.execute("""update jobs set interview_time = '2022-10-15 10:00:00' where id = 1""")
+    # cur.execute("""update jobs set interview_time = '2022-10-15 10:00:00' where id = 1""")
+    cur.execute("delete from jobs where company = 'Perfect Company'")
     # # commit the tables
     conn.commit()
 

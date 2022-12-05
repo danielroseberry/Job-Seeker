@@ -91,7 +91,7 @@ def register():
 
 @app.route("/<username>/active-jobs", methods = ["GET"])
 def get_jobs(username):
-    cursor = query_db("SELECT * FROM jobs WHERE username = ? and status = 1", 
+    cursor = query_db("SELECT * FROM jobs WHERE username = ?", 
         [username], one=False)
     jobList = []
     if cursor:
@@ -122,3 +122,34 @@ def get_jobs(username):
         return jobList
     else:
         return {}
+
+
+@app.route("/<username>/<id>", methods = ["POST"])
+def add_job(username, id):
+    job = request.get_json()
+
+    conn = get_db()
+    conn.cursor(). execute("INSERT INTO jobs VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", 
+        [id, 
+        username, 
+        job["company"] if "company" in job else None,
+        job["title"] if "title" in job else None,
+        job["salary"] if "salary" in job else None,
+        job["street"] if "street" in job else None,
+        job["city"] if "city" in job else None,
+        job["state"] if "state" in job else None,
+        job["zipcode"] if "zipcode" in job else None,
+        (job["deadline"] + ' 00:00:00') if "deadline" in job else None,
+        job["description"] if "description" in job else None,
+        job["qualifications"] if "qualifications" in job else None,
+        job["url"] if "url" in job else None,
+        job["date_applied"] if "date_applied" in job else None,
+        job["status"] if "status" in job else None,
+        job["rating"] if "rating" in job else None,
+        job["interview_time"] if "interview_time" in job else None,
+        job["acceptance_deadline"] if "acceptance_deadline" in job else None,
+        job["resume"] if "resume" in job else None,
+        job["cover_letter"] if "cover_letter" in job else None])
+
+    conn.commit()
+    return {}

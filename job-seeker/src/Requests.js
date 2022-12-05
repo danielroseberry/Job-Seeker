@@ -30,3 +30,16 @@ export const getJobs = async username => {
     const res = await fetch(`${APIURL}/${username}/active-jobs`);
     return res.json();
 };
+
+export const addJob = async (job, username) => {
+    const res = await fetch(`${APIURL}/${username}/${job.id}`, {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(job)
+    });
+    return;
+};
