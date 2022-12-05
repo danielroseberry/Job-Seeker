@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import {jobList} from './dummy-data'
+import {getJobs} from './../Requests'
 
-function ActiveJobs() {
+function ActiveJobs({username}) {
     const [jobs, setJobs] = useState([]);
 
+    const getData = async () => {
+        const res = await getJobs(username);
+        setJobs(res);
+    };
+
     useEffect(() => {
-        setJobs(jobList);
+        getData();
     }, []);
 
     return(

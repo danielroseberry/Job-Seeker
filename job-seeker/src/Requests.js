@@ -25,3 +25,8 @@ export const createUser = async user => {
     });
     return res.json();
 };
+
+export const getJobs = async username => {
+    const res = await fetch(`${APIURL}/${username}/active-jobs`);
+    return res.json();
+};

@@ -64,7 +64,7 @@ function App() {
       (<div className='login'>
       <LoginForm Login={Login} Register={Register} />
       </div>) : 
-      <UserPortal Logout={Logout} name={user.name}/>
+      <UserPortal Logout={Logout} name={user.name} username={user.username}/>
       }
     </div>
   );

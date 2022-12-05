@@ -3,7 +3,7 @@ import TaskList from './TaskList'
 import ActiveJobs from './ActiveJobs';
 import InterestJobs from './InterestJobs';
 
-function UserPortal({Logout, name}) {
+function UserPortal({Logout, name, username}) {
 
      return(
          <div className='userPortal'>
@@ -15,7 +15,7 @@ function UserPortal({Logout, name}) {
                 <h2>Welcome, <span>{name}</span></h2>
                 <div className='flex-container'>
                     <TaskList />
-                    <ActiveJobs />
+                    <ActiveJobs username={username}/>
                     <InterestJobs />
                 </div>
             </div>
