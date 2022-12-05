@@ -22,7 +22,11 @@ function TaskList() {
                             <div className='task'>
                                 <div>Apply to {task.company}</div>
                                 <div>{task.deadline}</div>
-                                <div className='checkBox'></div>
+                                    <div class="close-container">
+                                    <div class="leftright"></div>
+                                    <div class="rightleft"></div>
+                                    <label class="close">close</label>
+                                </div>
                             </div>
                         </div>
                     ))}

@@ -22,14 +22,14 @@ function ActiveJobs({username, rerender}) {
                     <div>Sort By</div>
                 </div>
                 <div>
-                    {jobs.map((job) => (
+                    {(jobs.map) ? jobs.map((job) => (
                         <div key={job.id} className='task-container'>
                             <div className='task'>
                                 <div>{job.title}</div>
                                 <div>{job.rating}</div>
                             </div>
                         </div>
-                    ))}
+                    )): ""}
                 </div>
             </div>
         </div>
