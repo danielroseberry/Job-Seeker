@@ -143,7 +143,7 @@ def add_job(username, id):
         job["description"] if "description" in job else None,
         job["qualifications"] if "qualifications" in job else None,
         job["url"] if "url" in job else None,
-        job["date_applied"] if "date_applied" in job else None,
+        (job["date_applied"] + ' 00:00:00') if "date_applied" in job else None,
         job["status"] if "status" in job else None,
         job["rating"] if "rating" in job else None,
         job["interview_time"] if "interview_time" in job else None,
