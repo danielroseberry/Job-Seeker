@@ -184,7 +184,7 @@ form .form-inner .login-button-container {
 .form-inner .form-group:focus-within input {
   display: block;
   justify-content: center;
-  width: 75%;
+  width: 90%;
   padding: 10px 60px;
   background-color: #F8F8F8;
   border-radius: 8px;
@@ -209,7 +209,8 @@ form .form-inner input[type="submit"],
   cursor: pointer;
 }
 
-form .form-inner input[type="submit"]:hover, 
+form .form-inner input[type="submit"]:hover,
+form .new-task-form-inner input[type="submit"]:hover, 
 .welcome button:hover{
   background-position: 100%;
 }
@@ -263,6 +264,19 @@ form .form-inner input[type="submit"]:hover,
   right: 30px;
   top: 30px;
   display: inline-block;
+  padding: 10px 60px;
+  border-radius: 8px;
+  background-image: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #22dbec);
+  background-size: 200%;
+  background-position: 0%;
+  transition: 0.4s;
+  color: #FFF;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.userPortal .content-container button {
+  position: relative;
   padding: 10px 60px;
   border-radius: 8px;
   background-image: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #22dbec);
@@ -332,4 +346,127 @@ form .form-inner input[type="submit"]:hover,
   padding: 0;
   text-align: center;
   width: 20px;
+}
+
+.add-task-button button{
+  position: absolute;
+  top: 16px;
+  right: 0px;
+  padding: 10px 60px;
+  border-radius: 8px;
+  background-image: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #22dbec);
+  background-size: 200%;
+  background-position: 0%;
+  transition: 0.4s;
+  color: #FFF;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.AddNewTask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #FFCE00;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-inner{
+  position: relative;
+  padding: 32px;
+  width: 100%;
+  max-width: 860px;
+  background-color: #F8F8F8;
+}
+
+.popup-inner .close-button{
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.popup-inner .close-button button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 10px 60px;
+  border-radius: 8px;
+  background-image: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #22dbec);
+  background-size: 200%;
+  background-position: 0%;
+  transition: 0.4s;
+  color: #FFF;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+form .popup-inner {
+  position: relative;
+  display: block;
+  background-color: transparent;
+  padding: 10px;
+  z-index: 2;
+}
+
+.popup-inner .input-group{
+  top: 10px;
+  position: relative;
+  width: 280px;
+  transition: 0.5s;
+}
+
+form .popup-inner .form-group {
+  display: block;
+  width: 300px;
+  margin-bottom: 15px;
+}
+
+.popup-inner .form-group label {
+  display: block;
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 5px;
+  transition: 0.4s;
+}
+
+.popup-inner .form-group:focus-within label {
+  color: #22dbec;
+}
+
+.popup-inner .form-group:focus-within input {
+  display: block;
+  justify-content: center;
+  width: 90%;
+  padding: 10px 60px;
+  background-color: #F8F8F8;
+  border-radius: 8px;
+  transition: 0.4s;
+}
+
+form .popup-inner .form-group input:focus {
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+form .popup-inner .submit-task-button-container {
+  text-align: center;
+}
+
+form .new-task-form-inner input[type="submit"]{
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 60px;
+  border-radius: 8px;
+  background-image: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #22dbec);
+  background-size: 200%;
+  background-position: 0%;
+  transition: 0.4s;
+  color: #FFF;
+  font-weight: 700;
+  cursor: pointer;
 }
