@@ -13,8 +13,9 @@ function TaskList() {
             <h2>Upcoming Tasks</h2>
             <div>
                 <div className='header-container'>
-                    <h3>Task</h3>
-                    <h3>Deadline</h3>
+                    <div className='entry'>Task</div>
+                    <div className='entry'>Deadline</div>
+                    <div className='entry'>Status</div>
                 </div>
                 <div>
                     {tasks.map((task) => (
@@ -22,11 +23,9 @@ function TaskList() {
                             <div className='task'>
                                 <div>Apply to {task.company}</div>
                                 <div>{task.deadline}</div>
-                                    <div class="close-container">
-                                    <div class="leftright"></div>
-                                    <div class="rightleft"></div>
-                                    <label class="close">close</label>
-                                </div>
+                                
+                                    <div><input type="checkbox" id="status-box" name="status-box" value="Status"/></div>
+                                
                             </div>
                         </div>
                     ))}

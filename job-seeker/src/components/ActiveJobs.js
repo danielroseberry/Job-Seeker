@@ -19,14 +19,22 @@ function ActiveJobs({username, rerender}) {
             <h2>Active Jobs</h2>
             <div>
                 <div className='header-container'>
-                    <div>Sort By</div>
+                    <div className='entry'>Title</div>
+                    <div className='entry'>Location</div>
+                    <div className='entry'>         </div>
                 </div>
                 <div>
                     {(jobs.map) ? jobs.map((job) => (
                         <div key={job.id} className='task-container'>
                             <div className='task'>
-                                <div>{job.title}</div>
+                                <div>{job.company} {job.title}</div>
+                                <div>{job.city},{job.state}</div>
                                 <div>{job.rating}</div>
+                                <div class="close-container">
+                                    <div class="leftright"></div>
+                                    <div class="rightleft"></div>
+                                    <label class="close">close</label>
+                                </div>
                             </div>
                         </div>
                     )): ""}
