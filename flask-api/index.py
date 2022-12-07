@@ -153,3 +153,12 @@ def add_job(username, id):
 
     conn.commit()
     return {}
+
+
+@app.route("/<username>/<id>", methods = ["DELETE"])
+def deleteJob(username, id):
+    conn = get_db()
+    conn.execute("DELETE FROM jobs WHERE id = ? AND username = ?", 
+        [id, username])
+    conn.commit()
+    return {}

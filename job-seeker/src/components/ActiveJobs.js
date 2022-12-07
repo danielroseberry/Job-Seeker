@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {jobList} from './dummy-data'
-import {getJobs} from './../Requests'
+import {getJobs, deleteJob} from './../Requests'
 
 function ActiveJobs({username, rerender}) {
     const [jobs, setJobs] = useState([]);
@@ -13,6 +13,11 @@ function ActiveJobs({username, rerender}) {
     useEffect(() => {
         getData();
     }, [rerender]);
+
+    const handleDelete = async (id) => {
+        await deleteJob(username, id);
+        await getData();
+    };
 
     return(
         <div className='taskList'>
@@ -30,7 +35,7 @@ function ActiveJobs({username, rerender}) {
                                 <div>{job.company} {job.title}</div>
                                 <div>{job.city},{job.state}</div>
                                 <div>{job.rating}</div>
-                                <div class="close-container">
+                                <div class="close-container" onClick={() => handleDelete(job.id)}>
                                     <div class="leftright"></div>
                                     <div class="rightleft"></div>
                                     <label class="close">close</label>

@@ -43,3 +43,15 @@ export const addJob = async (job, username) => {
     });
     return;
 };
+
+export const deleteJob = async (username, id) => {
+    const res = await fetch(`${APIURL}/${username}/${id}`, {
+        method: "DELETE",
+        mode: "cors",
+        cache: "no-cache",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    });
+    return;
+};
