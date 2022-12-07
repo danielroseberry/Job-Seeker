@@ -88,7 +88,7 @@ function UserPortal({Logout, name, username}) {
                 <div className='flex-container'>
                     <TaskList />
                     <ActiveJobs username={username} rerender={buttonAddNewTask}/>
-                    <InterestJobs />
+                    {/* <InterestJobs /> */}
                 </div>
             </div>
          </div>
