@@ -162,3 +162,40 @@ def deleteJob(username, id):
         [id, username])
     conn.commit()
     return {}
+
+
+@app.route("/<username>/tasks", methods = ["GET"])
+def get_tasks(username):
+    cursor = query_db("SELECT * FROM jobs WHERE username = ? AND deadline >= datetime() AND status IS NULL ORDER BY deadline ASC", 
+        [username], one=False)
+    taskList = []
+    if cursor:
+        for row in cursor:
+            cursorDict = {
+                "id": row[0],
+                "username": row[1],
+                "company": row[2],
+                "title": row[3],
+                "salary": row[4],
+                "street": row[5],
+                "city": row[6],
+                "state": row[7],
+                "zipcode": row[8],
+                "deadline": (row[9].strftime("%m/%d/%Y") if row[9] else None),
+            }
+            taskList.append(cursorDict)
+        return taskList
+    else:
+        return {}
+
+
+@app.route("/<username>/<id>", methods = ["PUT"])
+def update_task(username, id):
+    job = request.get_json()
+
+    conn = get_db()
+    conn.cursor(). execute("UPDATE jobs SET STATUS = ? WHERE id = ? AND username = ?", 
+        [job["status"], id, username])
+
+    conn.commit()
+    return {}

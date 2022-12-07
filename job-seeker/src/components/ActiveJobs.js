@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import {jobList} from './dummy-data'
 import {getJobs, deleteJob} from './../Requests'
 
 function ActiveJobs({username, rerender}) {
@@ -35,7 +34,7 @@ function ActiveJobs({username, rerender}) {
                                 <div>{job.company} {job.title}</div>
                                 <div>{job.city},{job.state}</div>
                                 <div>{job.rating}</div>
-                                <div class="close-container" onClick={() => handleDelete(job.id)}>
+                                <div class="close-container" onClick={() => {handleDelete(job.id)}}>
                                     <div class="leftright"></div>
                                     <div class="rightleft"></div>
                                     <label class="close">close</label>

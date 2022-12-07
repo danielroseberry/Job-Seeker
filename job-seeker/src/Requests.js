@@ -31,6 +31,11 @@ export const getJobs = async username => {
     return res.json();
 };
 
+export const getTasks = async username => {
+    const res = await fetch(`${APIURL}/${username}/tasks`);
+    return res.json();
+};
+
 export const addJob = async (job, username) => {
     const res = await fetch(`${APIURL}/${username}/${job.id}`, {
         method: "POST",
@@ -52,6 +57,19 @@ export const deleteJob = async (username, id) => {
         headers: {
             "Content-Type": "application/json"
         },
+    });
+    return;
+};
+
+export const updateTask = async (username, job) => {
+    const res = await fetch(`${APIURL}/${username}/${job.id}`, {
+        method: "PUT",
+        mode: "cors",
+        cache: "no-cache",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(job)
     });
     return;
 };
