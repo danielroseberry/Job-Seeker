@@ -67,7 +67,8 @@ try:
 
     # cur.execute("""INSERT INTO user VALUES ('admin', 'password', 'Admin', 'admin@jobseeker.com', 21045)""")
     # cur.execute("""update jobs set interview_time = '2022-10-15 10:00:00' where id = 1""")
-    cur.execute("delete from jobs where company = 'Perfect Company'")
+    #cur.execute("delete from jobs where company = 'Perfect Company'")
+    cur.execute("update jobs set status = null where id = 1")
     # # commit the tables
     conn.commit()
 
@@ -78,6 +79,9 @@ try:
         print("Name: ", row[2])
         print("Email: ", row[3])
         print("Zip: ", row[4])'''
+    '''cursor = conn.execute("SELECT * FROM jobs WHERE username = 'admin' AND deadline >= datetime() AND status IS NOT NULL")
+    for row in cursor:
+        print(row[0], " ", row[2], ", ", row[3])'''
 
 except sqlite3.Error as err:
     print("There was a problem connecting to the database:", err)

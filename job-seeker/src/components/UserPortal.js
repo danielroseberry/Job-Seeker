@@ -3,7 +3,7 @@ import TaskList from './TaskList'
 import ActiveJobs from './ActiveJobs';
 import InterestJobs from './InterestJobs';
 import AddNewTask from './AddNewTask';
-import { addJob } from '../Requests';
+import { addJob, deleteJob } from '../Requests';
 
 function UserPortal({Logout, name, username}) {
     const [buttonAddNewTask, setAddNewTask] = useState(false);
@@ -86,8 +86,8 @@ function UserPortal({Logout, name, username}) {
                     </AddNewTask>
                 </div>
                 <div className='flex-container'>
-                    <TaskList />
-                    <ActiveJobs username={username} rerender={buttonAddNewTask}/>
+                    <TaskList username={username} rerender={buttonAddNewTask} />
+                    <ActiveJobs username={username} rerender={buttonAddNewTask} />
                     {/* <InterestJobs /> */}
                 </div>
             </div>
